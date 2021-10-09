@@ -1,0 +1,12 @@
+@mixin displayFlexCenter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: center;
+    flex-direction: column;
+}
+
+@mixin buttonReset{
+    background: none;
+    border: none;
+}

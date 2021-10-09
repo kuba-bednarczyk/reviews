@@ -1,0 +1,157 @@
+// imports
+@use 'mixins';
+@use 'variables';
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+
+// reset margins and paddings
+*, *::after, *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// actual styles
+main, .container {
+    font-family: 'Open Sans';
+    background-color: variables.$grey-5;
+    height: 100vh;
+    width: 100%;
+}
+
+.container{ @include mixins.displayFlexCenter; }
+
+.title{
+    @include mixins.displayFlexCenter;
+    margin: 10px;
+    padding: 10px;
+    font-size: 1.75rem;
+    text-transform: capitalize;
+    font-weight: 800;
+    letter-spacing: 5px;
+    color: variables.$grey-1;
+    margin-bottom: 4rem;
+    &__underline{
+        margin-top: 1rem;
+        background-color: variables.$blue-2;
+        height: .25rem;
+        width: 5rem;
+    }
+
+}
+
+.reviews{
+    @include mixins.displayFlexCenter;
+    background-color: #fff;
+    max-width: 650px;
+    padding: 2.5em;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 10px -5px variables.$grey-2;
+    transition: box-shadow ease-in-out .2s 0s;
+    &:hover{ 
+        box-shadow: 0px 0px 10px -3px variables.$grey-2;
+        transition: box-shadow ease-in-out .2s 0s;
+    }
+
+    &__img{
+        position: relative;
+        background-color: variables.$blue-2;
+        height: 10em;
+        width: 10em;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        & img{
+            display: block;
+            position: relative;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        &::before{
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: variables.$blue-2;
+            border-radius: 50%;
+            top: -0.25rem;
+            right: -0.5rem;
+        }
+
+        &::after{
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            content: "\f10e";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            transform: translateY(25%);
+            background-color: variables.$blue-2;
+            color: #fff;
+        }
+    }
+
+    &__name{
+        font-weight: 600;
+        font-size: 1rem;
+        color: variables.$grey-1;
+        letter-spacing: 3px;
+        text-transform: capitalize;
+    }
+
+    &__job{
+        font-weight: 500;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        color: variables.$blue-2;
+        margin-bottom: 10px;
+    }
+
+    &__desc{
+        text-align: justify;
+        color: variables.$grey-3;
+    }
+}
+
+.buttons {
+    &__prev, &__next{
+        @include mixins.buttonReset;
+        font-size: 1.5rem;
+        padding: .75rem;
+        font-weight: 300;
+        color: variables.$blue-3;
+        transition: color ease-in-out .2s .1s;
+        &:hover{
+            color: variables.$blue-2;
+            transition: color ease-in-out .2s .1s;
+            cursor: pointer;
+        }
+    }
+}
+
+.random-btn {
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    padding: 0.45rem;
+    border-radius: 0.25rem;
+    background-color: variables.$blue-5;
+    color: variables.$blue-2;
+    border: 1px solid variables.$blue-2;
+    transition: all ease-in-out .2s .1s;
+    &:hover{
+        cursor: pointer;
+        background-color: variables.$blue-2;
+        color: variables.$blue-5;
+        transition: all ease-in-out .2s .1s;
+    }
+}
+
+
