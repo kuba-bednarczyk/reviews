@@ -38,5 +38,49 @@ const reviews = [
     },
   ];
 
+// select buttons 
+const prevBtn = document.querySelector('.buttons__prev');
+const nextBtn = document.querySelector('.buttons__next');
+const randomBtn = document.querySelector('.random-btn');
 
+//elements
+const img = document.querySelector('.reviews__img img');
+const author = document.querySelector('.reviews__name');
+const job = document.querySelector('.reviews__job');
+const desc = document.querySelector('.reviews__desc');
 
+// set starting item (id of review)
+let currentItem = 0;
+
+// load initial item
+window.addEventListener('DOMContentLoaded', function(){
+  showPerson(currentItem);
+});
+
+// show person based on item (reviews id)
+function showPerson(personNum){
+    const item = reviews[personNum];
+    img.src = item.img;
+    author.textContent = item.name;
+    job.textContent = item.job;
+    desc.textContent = item.text;
+}
+
+// show next person
+
+nextBtn.addEventListener('click', function(){ 
+  currentItem >= reviews.length - 1 ? currentItem = 0 : currentItem++;
+  showPerson(currentItem);
+});
+
+// show prev person
+prevBtn.addEventListener('click', function(){ 
+  currentItem <= 0 ? currentItem = reviews.length - 1 : currentItem--;
+  showPerson(currentItem);
+});
+
+// show random person
+randomBtn.addEventListener('click', function(){
+  currentItem = Math.floor(Math.random() * reviews.length);
+  showPerson(currentItem);
+})
